@@ -6,7 +6,22 @@ const repo: UserRepository = {
     return {}
   },
   list: (): User[] => {
-    return []
+    const users: User[] = [
+      {
+        id: 1,
+        email: 'foo@mail.com',
+        username: 'foo',
+        fullName: 'Foo',
+      },
+      {
+        id: 2,
+        email: 'bar@mail.com',
+        username: 'bar',
+        fullName: 'Bar',
+      },
+    ]
+
+    return users
   },
   create: (newUser: User) => {},
   update: (existingUser: User) => {},
