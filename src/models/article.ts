@@ -1,4 +1,4 @@
-import { UserId } from './user_model'
+import { UserId } from './user'
 
 export type ArticleId = number
 

@@ -1,18 +1,12 @@
 import express from 'express'
 import repos from '../../../repositories'
-import { Response } from '../../../models'
+import { DefaultResponse } from '../../responses'
 
-export default (_: express.Request, res: express.Response) => {
-  try {
-    const users = repos.user.list()
+export default async (_: express.Request, res: express.Response) => {
+  const users = await repos.user.list()
 
-    const resp: Response = {
-      ok: true,
-      data: users,
-    }
+  const resp = DefaultResponse
+  resp.data = users
 
-    res.status(200).json(resp)
-  } catch (err) {
-    throw err
-  }
+  res.status(200).json(resp)
 }

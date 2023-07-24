@@ -1,7 +1,8 @@
 import express from 'express'
+import create from './create'
 
 const router = express.Router()
 
-router.get('/', (req, res) => {})
+router.post('/', create)
 
 export default router
