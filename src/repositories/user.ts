@@ -26,7 +26,10 @@ const repo: UserRepository = {
       },
     ]
   },
-  create: async (newUser: User) => {},
+  create: async (newUser: User) => {
+    const err = new Error('error creating new user')
+    throw err
+  },
   update: (existingUser: User) => {},
   delete: (id: UserId) => {},
 }

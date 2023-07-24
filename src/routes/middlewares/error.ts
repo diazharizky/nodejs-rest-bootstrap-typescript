@@ -1,5 +1,7 @@
-import { Request, Response } from 'express'
+import { Request, Response, NextFunction } from 'express'
+import { FatalResponse } from '../responses'
 
-export default (err: Error, _: Request, res: Response) => {
-  return res.status(500).send('Something went wrong!')
+export default (err: Error, _: Request, res: Response, next: NextFunction) => {
+  const resp = FatalResponse(err)
+  res.status(500).send(resp)
 }
