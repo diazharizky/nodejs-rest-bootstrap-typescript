@@ -2,10 +2,10 @@ import { ArticleRepository } from '../interfaces'
 import { Article, ArticleId } from '../models'
 
 const repo: ArticleRepository = {
-  get: (id: ArticleId): Article => {
+  get: async (id: ArticleId): Promise<Article> => {
     return {}
   },
-  list: (): Article[] => {
+  list: async (): Promise<Article[]> => {
     return []
   },
   create: (newArticle: Article) => {},

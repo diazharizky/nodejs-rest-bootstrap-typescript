@@ -2,11 +2,16 @@ import { UserRepository } from '../interfaces'
 import { User, UserId } from '../models'
 
 const repo: UserRepository = {
-  get: (id: UserId): User => {
-    return {}
+  get: async (id: UserId): Promise<User> => {
+    return {
+      id: 1,
+      email: 'foo@mail.com',
+      username: 'foo',
+      fullName: 'Foo',
+    }
   },
-  list: (): User[] => {
-    const users: User[] = [
+  list: async (): Promise<User[]> => {
+    return [
       {
         id: 1,
         email: 'foo@mail.com',
@@ -20,10 +25,8 @@ const repo: UserRepository = {
         fullName: 'Bar',
       },
     ]
-
-    return users
   },
-  create: (newUser: User) => {},
+  create: async (newUser: User) => {},
   update: (existingUser: User) => {},
   delete: (id: UserId) => {},
 }

@@ -1,7 +1,7 @@
-import UserRepository from './user_repository'
-import ArticleRepository from './article_repository'
+import user from './user'
+import article from './article'
 
 export default {
-  user: UserRepository,
-  article: ArticleRepository,
+  user,
+  article,
 }
