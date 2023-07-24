@@ -1,7 +1,9 @@
-import errorMiddleware from './error_middleware'
-import authenticationMiddleware from './authentication_middleware'
+import error from './error'
+import authentication from './authentication'
+import routeNotFound from './route_not_found'
 
 export default {
-  error: errorMiddleware,
-  authentication: authenticationMiddleware,
+  error,
+  authentication,
+  routeNotFound,
 }
