@@ -1,6 +1,5 @@
 import express from 'express'
 import middlewares from './middlewares'
-
 import Core from '../core'
 import UsersController from './controllers/users'
 import ArticlesController from './controllers/articles'
@@ -11,8 +10,11 @@ const router = express()
 
 router.use(express.json())
 
-router.use('/users', new UsersController(core).router())
-router.use('/users/:user_id/articles', new ArticlesController(core).router())
+const usersPath = '/users'
+router.use(usersPath, new UsersController(core).router())
+
+const articlesPath = usersPath + '/:user_id/articles'
+router.use(articlesPath, new ArticlesController(core).router())
 
 router.use(middlewares.routeNotFound) // Not found route will be redirected here
 router.use(middlewares.error)
