@@ -1,6 +1,6 @@
 import error from './error'
 import authentication from './authentication'
-import routeNotFound from './route_not_found'
+import routeNotFound from './routeNotFound'
 
 export default {
   error,
