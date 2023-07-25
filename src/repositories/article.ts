@@ -5,18 +5,24 @@ class ArticleRepository implements repositories.Article {
   constructor() {}
 
   async get(id: ArticleId): Promise<Article> {
-    return {}
+    return {
+      id,
+      userId: 1,
+      content: '',
+      tags: [''],
+      createdAt: '',
+    }
   }
 
   async list(): Promise<Article[]> {
     return []
   }
 
-  async create(newArticle: Article) {}
+  create(newArticle: Article) {}
 
-  async update(existingArticle: Article) {}
+  update(existingArticle: Article) {}
 
-  async delete(id: ArticleId) {}
+  delete(id: ArticleId) {}
 }
 
 export default ArticleRepository

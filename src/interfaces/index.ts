@@ -2,11 +2,11 @@ import * as models from '../models'
 
 export namespace repositories {
   export interface User {
-    get(id: models.UserId): Promise<models.User>
     list(): Promise<models.User[]>
-    create(newUser: models.User): Promise<void>
-    update(existingUser: models.User): Promise<void>
-    delete(id: models.UserId): Promise<void>
+    get(id: models.UserId): Promise<models.User>
+    create(newUser: models.User): void
+    update(existingUser: models.User): void
+    delete(id: models.UserId): void
   }
 
   export interface Article {

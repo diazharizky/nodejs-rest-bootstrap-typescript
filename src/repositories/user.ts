@@ -5,18 +5,24 @@ class UserRepository implements repositories.User {
   constructor() {}
 
   async get(id: UserId): Promise<User> {
-    return {}
+    return {
+      id,
+      email: '',
+      username: '',
+      fullName: '',
+      createdAt: '',
+    }
   }
 
   async list(): Promise<User[]> {
     return []
   }
 
-  async create(newUser: User) {}
+  create(newUser: User) {}
 
-  async update(existingUser: User) {}
+  update(existingUser: User) {}
 
-  async delete(id: UserId) {}
+  delete(id: UserId) {}
 }
 
 export default UserRepository

@@ -2,6 +2,8 @@ import { Router, Request, Response } from 'express'
 import Core from '../../core'
 import { DefaultResponse } from '../responses'
 
+export const userIdParam = 'userId'
+
 class ArticlesController {
   private core: Core
 
@@ -10,14 +12,26 @@ class ArticlesController {
   }
 
   router(): Router {
-    const r = Router()
+    const r = Router({ mergeParams: true })
 
+    r.get('/:id', this.get())
     r.post('/', this.create())
 
     return r
   }
 
-  create(): (req: Request, res: Response) => void {
+  get() {
+    return async (req: Request, res: Response) => {
+      const userId = req.params[userIdParam]
+
+      const resp = DefaultResponse
+      resp.data = userId
+
+      res.status(200).json(resp)
+    }
+  }
+
+  create() {
     return async (_: Request, res: Response) => {
       const resp = DefaultResponse
 

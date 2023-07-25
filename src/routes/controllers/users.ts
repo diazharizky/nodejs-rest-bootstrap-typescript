@@ -20,7 +20,7 @@ class UsersController {
     return r
   }
 
-  list(): (req: Request, res: Response) => void {
+  list() {
     return async (_: Request, res: Response) => {
       const users = await this.core.userRepository.list()
 
@@ -31,7 +31,7 @@ class UsersController {
     }
   }
 
-  get(): (req: Request, res: Response) => void {
+  get() {
     return async (req: Request, res: Response) => {
       try {
         const userId = +req.params['id']
