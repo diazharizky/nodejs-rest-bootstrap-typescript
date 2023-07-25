@@ -1,37 +1,22 @@
-import { UserRepository } from '../interfaces'
-import { User, UserId } from '../models'
+import { repositories } from '../interfaces'
+import { UserId, User } from '../models'
 
-const repo: UserRepository = {
-  get: async (id: UserId): Promise<User> => {
-    return {
-      id: 1,
-      email: 'foo@mail.com',
-      username: 'foo',
-      fullName: 'Foo',
-    }
-  },
-  list: async (): Promise<User[]> => {
-    return [
-      {
-        id: 1,
-        email: 'foo@mail.com',
-        username: 'foo',
-        fullName: 'Foo',
-      },
-      {
-        id: 2,
-        email: 'bar@mail.com',
-        username: 'bar',
-        fullName: 'Bar',
-      },
-    ]
-  },
-  create: async (newUser: User) => {
-    const err = new Error('error creating new user')
-    throw err
-  },
-  update: (existingUser: User) => {},
-  delete: (id: UserId) => {},
+class UserRepository implements repositories.User {
+  constructor() {}
+
+  async get(id: UserId): Promise<User> {
+    return {}
+  }
+
+  async list(): Promise<User[]> {
+    return []
+  }
+
+  async create(newUser: User) {}
+
+  async update(existingUser: User) {}
+
+  async delete(id: UserId) {}
 }
 
-export default repo
+export default UserRepository

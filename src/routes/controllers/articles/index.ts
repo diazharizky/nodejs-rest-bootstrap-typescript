@@ -1,8 +1,18 @@
-import express from 'express'
-import create from './create'
+import { Router } from 'express'
+import Core from '../../../core'
 
-const router = express.Router()
+class ArticlesController {
+  private core: Core
 
-router.post('/', create)
+  constructor(core: Core) {
+    this.core = core
+  }
 
-export default router
+  router(): Router {
+    const router = Router()
+
+    return router
+  }
+}
+
+export default ArticlesController

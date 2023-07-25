@@ -1,17 +1,25 @@
-import { User, UserId, Article, ArticleId } from '../models'
+import * as models from '../models'
 
-export interface UserRepository {
-  get(id: UserId): Promise<User>
-  list(): Promise<User[]>
-  create(newUser: User): Promise<void>
-  update(existingUser: User): void
-  delete(id: UserId): void
+export namespace repositories {
+  export interface User {
+    get(id: models.UserId): Promise<models.User>
+    list(): Promise<models.User[]>
+    create(newUser: models.User): Promise<void>
+    update(existingUser: models.User): Promise<void>
+    delete(id: models.UserId): Promise<void>
+  }
+
+  export interface Article {
+    list(): Promise<models.Article[]>
+    get(id: models.ArticleId): Promise<models.Article>
+    create(newArticle: models.Article): void
+    update(existingArticle: models.Article): void
+    delete(id: models.ArticleId): void
+  }
 }
 
-export interface ArticleRepository {
-  get(id: ArticleId): Promise<Article>
-  list(): Promise<Article[]>
-  create(newArticle: Article): void
-  update(existingArticle: Article): void
-  delete(id: ArticleId): void
+export namespace modules {
+  export interface CreateArticle {}
+  export interface UpdateArticle {}
+  export interface DeleteArticle {}
 }

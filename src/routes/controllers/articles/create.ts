@@ -1,14 +1,19 @@
 import { Request, Response } from 'express'
-import { Article } from '../../../models'
-import modules from '../../../modules'
+import Core from '../../../core'
 import { DefaultResponse } from '../../responses'
 
-export default async (req: Request, res: Response) => {
-  const newArticle: Article = req.body
-  await modules.createArticle(newArticle)
+class CreateArticleController {
+  private core: Core
 
-  const resp = DefaultResponse
-  resp.data = newArticle
+  constructor(core: Core) {
+    this.core = core
+  }
 
-  res.status(200).json(resp)
+  async route(_: Request, res: Response) {
+    const resp = DefaultResponse
+
+    res.status(200).json(resp)
+  }
 }
+
+export default CreateArticleController

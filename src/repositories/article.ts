@@ -1,16 +1,22 @@
-import { ArticleRepository } from '../interfaces'
-import { Article, ArticleId } from '../models'
+import { repositories } from '../interfaces'
+import { ArticleId, Article } from '../models'
 
-const repo: ArticleRepository = {
-  get: async (id: ArticleId): Promise<Article> => {
+class ArticleRepository implements repositories.Article {
+  constructor() {}
+
+  async get(id: ArticleId): Promise<Article> {
     return {}
-  },
-  list: async (): Promise<Article[]> => {
+  }
+
+  async list(): Promise<Article[]> {
     return []
-  },
-  create: (newArticle: Article) => {},
-  update: (existingArticle: Article) => {},
-  delete: (id: ArticleId) => {},
+  }
+
+  async create(newArticle: Article) {}
+
+  async update(existingArticle: Article) {}
+
+  async delete(id: ArticleId) {}
 }
 
-export default repo
+export default ArticleRepository
