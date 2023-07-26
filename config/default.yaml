@@ -1,0 +1,9 @@
+app:
+  host: localhost
+  port: 3000
+  name: nodejs-rest-bootstrap
+  version: 0.0.1
+
+jaeger:
+  host: http://localhost
+  port: 4318

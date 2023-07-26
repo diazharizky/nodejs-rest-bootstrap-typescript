@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "start:dev": "nodemon bin/app.ts"
+    "start:dev": "nodemon --require ./bin/trace.ts ./bin/app.ts"
   },
   "repository": {
     "type": "git",
@@ -24,12 +24,17 @@
   },
   "homepage": "https://github.com/diazharizky/nodejs-rest-bootstrap-typescript#readme",
   "dependencies": {
+    "@opentelemetry/api": "^1.4.1",
+    "@opentelemetry/exporter-trace-otlp-proto": "^0.41.1",
+    "@opentelemetry/resources": "^1.15.1",
+    "@opentelemetry/semantic-conventions": "^1.15.1",
     "@prisma/client": "^4.15.0",
     "config": "^3.3.9",
     "express": "^4.18.2",
     "winston": "^3.10.0"
   },
   "devDependencies": {
+    "@types/config": "^3.3.0",
     "@types/express": "^4.17.17",
     "@types/http-errors": "^2.0.1",
     "@types/jest": "^29.5.3",

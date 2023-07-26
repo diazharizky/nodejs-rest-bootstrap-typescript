@@ -1,3 +1,4 @@
+import { Span } from '@opentelemetry/api'
 import * as models from '../models'
 
 export namespace repositories {
@@ -19,7 +20,15 @@ export namespace repositories {
 }
 
 export namespace modules {
-  export interface CreateArticle {}
-  export interface UpdateArticle {}
-  export interface DeleteArticle {}
+  export interface CreateArticle {
+    call(traceSpan: Span): Promise<void>
+  }
+
+  export interface UpdateArticle {
+    call(traceSpan: Span): Promise<void>
+  }
+
+  export interface DeleteArticle {
+    call(traceSpan: Span): Promise<void>
+  }
 }
