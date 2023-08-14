@@ -4,8 +4,9 @@
   "description": "A bootstrap template for time saving of creating new NodeJS project written in TypeScript.",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
-    "start:dev": "nodemon --require ./bin/trace.ts ./bin/app.ts"
+    "test": "jest --collectCoverage",
+    "start:dev": "nodemon --require ./bin/trace.ts ./bin/app.ts",
+    "start:dev:notrace": "nodemon ./bin/app.ts"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "@types/jest": "^29.5.3",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
+    "axios-mock-adapter": "^1.21.5",
     "eslint": "^8.46.0",
     "jest": "^29.6.1",
     "nodemon": "^2.0.22",
