@@ -1,3 +1,3 @@
-import server from '../src/routes'
+import { serve } from '../src/routes/server'
 
-server()
+serve()
