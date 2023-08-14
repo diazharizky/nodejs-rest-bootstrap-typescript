@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction, Router } from 'express'
 import Core from '../../core'
+import jsonph from '../../apis/jsonplaceholder'
 import { User } from '../../models'
 import { DefaultResponse } from '../responses'
 
@@ -22,17 +23,19 @@ class UsersController {
 
   list() {
     return async (_: Request, res: Response) => {
-      const users = await this.core.userRepository.list()
+      // const users = await this.core.userRepository.list()
+
+      const comments = await jsonph.getComments()
 
       const resp = DefaultResponse
-      resp.data = users
+      resp.data = comments
 
       res.status(200).json(resp)
     }
   }
 
   get() {
-    return async (req: Request, res: Response) => {
+    return async (req: Request, res: Response, next: NextFunction) => {
       try {
         const userId = +req.params['id']
         const user = await this.core.userRepository.get(userId)
@@ -42,7 +45,7 @@ class UsersController {
 
         res.status(200).json(resp)
       } catch (err) {
-        throw err
+        next(err)
       }
     }
   }

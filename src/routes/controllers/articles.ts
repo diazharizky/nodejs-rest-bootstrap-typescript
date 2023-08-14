@@ -2,6 +2,7 @@ import { Router, Request, Response } from 'express'
 import { Tracer, trace } from '@opentelemetry/api'
 import Core from '../../core'
 import { DefaultResponse } from '../responses'
+import jsonph from '../../apis/jsonplaceholder'
 
 export const userIdParam = 'userId'
 
@@ -25,10 +26,12 @@ class ArticlesController {
 
   get() {
     return async (req: Request, res: Response) => {
-      const userId = req.params[userIdParam]
+      // const userId = req.params[userIdParam]
+
+      const posts = await jsonph.getPosts()
 
       const resp = DefaultResponse
-      resp.data = userId
+      resp.data = posts
 
       res.status(200).json(resp)
     }
