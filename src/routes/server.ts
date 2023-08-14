@@ -17,7 +17,7 @@ setUpControllers()
 app.use(middlewares.routeNotFound) // Not found routes will be redirected here
 app.use(middlewares.error)
 
-export default () => {
+export const serve = () => {
   const host: string = config.get('app.host')
   const port: number = config.get('app.port')
 
