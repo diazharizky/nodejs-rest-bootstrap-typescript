@@ -5,7 +5,7 @@ export type User = {
   email: string
   username: string
   fullName: string
-  createdAt: string
+  createdAt?: string
   updatedAt?: string
   deletedAt?: string
 }

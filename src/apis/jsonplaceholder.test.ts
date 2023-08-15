@@ -4,7 +4,7 @@
 import jsonPh, { client, post, comment } from './jsonplaceholder'
 import MockAdapter from 'axios-mock-adapter'
 
-const mocker = new MockAdapter(client)
+const mockAxios = new MockAdapter(client)
 
 test('Test get posts', async () => {
   const want: post[] = [
@@ -16,7 +16,7 @@ test('Test get posts', async () => {
     },
   ]
 
-  mocker.onGet('/posts').reply(200, { data: want })
+  mockAxios.onGet('/posts').reply(200, { data: want })
 
   const data = await jsonPh.getPosts()
 
@@ -34,7 +34,7 @@ test('Test get comments', async () => {
     },
   ]
 
-  mocker.onGet('/comments').reply(200, { data: want })
+  mockAxios.onGet('/comments').reply(200, { data: want })
 
   const data = await jsonPh.getComments()
 

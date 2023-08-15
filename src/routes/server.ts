@@ -31,5 +31,5 @@ function setUpControllers() {
   app.use(usersPath, new UsersController(core).router())
 
   const articlesPath = usersPath + `/:${userIdParam}/articles`
-  app.use(articlesPath, new ArticlesController(core).router())
+  app.use(articlesPath, new ArticlesController().router())
 }

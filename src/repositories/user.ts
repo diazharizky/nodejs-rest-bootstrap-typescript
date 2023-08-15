@@ -2,27 +2,31 @@ import { repositories } from '../interfaces'
 import { UserId, User } from '../models'
 
 class UserRepository implements repositories.User {
-  constructor() {}
+  private users: User[]
+
+  constructor() {
+    this.users = []
+  }
 
   async get(id: UserId): Promise<User> {
-    return {
-      id,
-      email: '',
-      username: '',
-      fullName: '',
-      createdAt: '',
-    }
+    return this.users[id - 1]
   }
 
   async list(): Promise<User[]> {
-    return []
+    return this.users
   }
 
-  create(newUser: User) {}
+  create(newUser: User) {
+    this.users.push(newUser)
+  }
 
-  update(existingUser: User) {}
+  update(existingUser: User) {
+    this.users[existingUser.id - 1] = existingUser
+  }
 
-  delete(id: UserId) {}
+  delete(id: UserId) {
+    this.users.splice(id - 1, 1)
+  }
 }
 
 export default UserRepository

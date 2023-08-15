@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { FATAL_ERROR_MESSSAGE } from './messages'
 
 export type Response = {
