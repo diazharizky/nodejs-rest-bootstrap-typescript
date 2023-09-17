@@ -1,8 +1,8 @@
 import { createArticle } from './createArticle'
-import { User } from '../models'
+import { Account } from '../models'
 
 test('test func', () => {
-  jest.mock('../repositories/user', () => {
+  jest.mock('../repositories/account', () => {
     return jest.fn().mockImplementation(() => {
       return {
         create: jest.fn().mockImplementationOnce(() => Promise.resolve()),
@@ -11,7 +11,7 @@ test('test func', () => {
   })
 
   const now = new Date().toISOString()
-  const newUser: User = {
+  const newAccount: Account = {
     id: 1,
     username: 'fakeusername',
     fullName: 'Fake Fullname',
@@ -19,5 +19,5 @@ test('test func', () => {
     createdAt: now,
   }
 
-  createArticle(newUser)
+  createArticle(newAccount)
 })

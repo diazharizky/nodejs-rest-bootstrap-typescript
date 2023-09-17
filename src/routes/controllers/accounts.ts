@@ -1,14 +1,13 @@
 import { Request, Response, NextFunction, Router } from 'express'
-import Core from '../../core'
-import jsonph from '../../apis/jsonplaceholder'
-import { User } from '../../models'
+import { Account } from '../../models'
 import { DefaultResponse } from '../responses'
+import { repositories } from '../../interfaces'
 
-class UsersController {
-  private core: Core
+export class AccountsController {
+  private accountRepository: repositories.Account
 
-  constructor(core: Core) {
-    this.core = core
+  constructor(accountRepository: repositories.Account) {
+    this.accountRepository = accountRepository
   }
 
   router(): Router {
@@ -23,12 +22,7 @@ class UsersController {
 
   list() {
     return async (_: Request, res: Response) => {
-      // const users = await this.core.userRepository.list()
-
-      const comments = await jsonph.getComments()
-
       const resp = DefaultResponse
-      resp.data = comments
 
       res.status(200).json(resp)
     }
@@ -37,11 +31,11 @@ class UsersController {
   get() {
     return async (req: Request, res: Response, next: NextFunction) => {
       try {
-        const userId = +req.params['id']
-        const user = await this.core.userRepository.get(userId)
+        const accountId = +req.params['id']
+        const account = await this.accountRepository.get(accountId)
 
         const resp = DefaultResponse
-        resp.data = user
+        resp.data = account
 
         res.status(200).json(resp)
       } catch (err) {
@@ -53,18 +47,16 @@ class UsersController {
   create(): (req: Request, res: Response, next: NextFunction) => void {
     return async (req: Request, res: Response, next: NextFunction) => {
       try {
-        const newUser: User = req.body
-        await this.core.userRepository.create(newUser)
+        const newAccount: Account = req.body
+        await this.accountRepository.create(newAccount)
 
         const resp = DefaultResponse
-        resp.data = newUser
+        resp.data = newAccount
 
-        res.status(200).json(newUser)
+        res.status(200).json(newAccount)
       } catch (err) {
         next(err)
       }
     }
   }
 }
-
-export default UsersController

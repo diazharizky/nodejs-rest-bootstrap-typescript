@@ -1,8 +1,8 @@
-import UserRepository from '../repositories/user'
-import { User } from '../models'
+import { AccountRepository } from '../repositories'
+import { Account } from '../models'
 
-export const createArticle = (newUser: User) => {
-  const repo = new UserRepository()
+export const createArticle = (newAccount: Account) => {
+  const repo = new AccountRepository()
 
-  repo.create(newUser)
+  repo.create(newAccount)
 }

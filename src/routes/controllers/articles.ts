@@ -1,11 +1,10 @@
 import { Router, Request, Response } from 'express'
 import { Tracer, trace } from '@opentelemetry/api'
 import { DefaultResponse } from '../responses'
-import jsonph from '../../apis/jsonplaceholder'
 
-export const userIdParam = 'userId'
+export const accountIdParam = 'accountId'
 
-class ArticlesController {
+export class ArticlesController {
   private trace: Tracer
 
   constructor() {
@@ -23,12 +22,7 @@ class ArticlesController {
 
   get() {
     return async (req: Request, res: Response) => {
-      // const userId = req.params[userIdParam]
-
-      const posts = await jsonph.getPosts()
-
       const resp = DefaultResponse
-      resp.data = posts
 
       res.status(200).json(resp)
     }
@@ -45,5 +39,3 @@ class ArticlesController {
     }
   }
 }
-
-export default ArticlesController

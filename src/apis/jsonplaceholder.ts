@@ -4,14 +4,14 @@ export const client = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com',
 })
 
-export type post = {
+export type Post = {
   userId: number
   id: number
   title: string
   body: string
 }
 
-export type comment = {
+export type Comment = {
   postId: number
   id: number
   name: string
@@ -19,14 +19,14 @@ export type comment = {
   body: string
 }
 
-const getPosts = async (): Promise<post[]> => {
-  const { data } = await client.get<post[]>('/posts')
+const getPosts = async (): Promise<Post[]> => {
+  const { data } = await client.get<Post[]>('/posts')
 
   return data
 }
 
-const getComments = async (): Promise<comment[]> => {
-  const { data } = await client.get<comment[]>('/comments')
+const getComments = async (): Promise<Comment[]> => {
+  const { data } = await client.get<Comment[]>('/comments')
 
   return data
 }

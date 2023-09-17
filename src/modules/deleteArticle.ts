@@ -1,14 +1,14 @@
 import { repositories } from '../interfaces'
 
 export default class DeleteArticleModule {
-  private userRepository: repositories.User
+  private accountRepository: repositories.Account
   private articleRepository: repositories.Article
 
   constructor(
-    userRepository: repositories.User,
+    accountRepository: repositories.Account,
     articleRepository: repositories.Article
   ) {
-    this.userRepository = userRepository
+    this.accountRepository = accountRepository
     this.articleRepository = articleRepository
   }
 

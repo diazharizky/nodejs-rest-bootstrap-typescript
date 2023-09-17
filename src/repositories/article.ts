@@ -1,7 +1,7 @@
 import { repositories } from '../interfaces'
 import { ArticleId, Article } from '../models'
 
-class ArticleRepository implements repositories.Article {
+export class ArticleRepository implements repositories.Article {
   private articles: Article[]
 
   constructor() {
@@ -11,7 +11,7 @@ class ArticleRepository implements repositories.Article {
   async get(id: ArticleId): Promise<Article> {
     return {
       id,
-      userId: 1,
+      accountId: 1,
       content: '',
       tags: [''],
       createdAt: '',
@@ -34,5 +34,3 @@ class ArticleRepository implements repositories.Article {
     this.articles.splice(id - 1, 1)
   }
 }
-
-export default ArticleRepository

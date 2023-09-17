@@ -2,12 +2,12 @@ import { Span } from '@opentelemetry/api'
 import * as models from '../models'
 
 export namespace repositories {
-  export interface User {
-    list(): Promise<models.User[]>
-    get(id: models.UserId): Promise<models.User>
-    create(newUser: models.User): void
-    update(existingUser: models.User): void
-    delete(id: models.UserId): void
+  export interface Account {
+    list(): Promise<models.Account[]>
+    get(id: models.AccountId): Promise<models.Account>
+    create(newAccount: models.Account): void
+    update(existingAccount: models.Account): void
+    delete(id: models.AccountId): void
   }
 
   export interface Article {

@@ -1,4 +1,4 @@
-export namespace UserErrors {
+export namespace AccountErrors {
   export const ERR_NOT_FOUND = 100
   export const ERR_RETRIEVE_FAILED = 101
   export const ERR_CREATE_FAILED = 102

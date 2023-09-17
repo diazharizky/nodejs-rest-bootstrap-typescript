@@ -11,7 +11,7 @@ export default function () {
   const T = 6
 
   for (let i = 0; i < 10; i++) {
-    http.get('http://127.0.0.1:3000/users');
+    http.get('http://127.0.0.1:3000/accounts');
   }
 
   const after = new Date().getTime();

@@ -1,14 +1,14 @@
 import request from 'supertest'
 import express from 'express'
 import util from 'util'
-import ArticlesController, { userIdParam } from './articles'
+import { ArticlesController, accountIdParam } from './articles'
 
 const app = express()
 
-const articlesPath = '/users/%s/articles'
+const articlesPath = '/accounts/%s/articles'
 
 app.use(
-  util.format(articlesPath, `:${userIdParam}`),
+  util.format(articlesPath, `:${accountIdParam}`),
   new ArticlesController().router()
 )
 
